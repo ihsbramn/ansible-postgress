@@ -1,19 +1,22 @@
 ---
-- name: Installing Nginx on Target VM
-  hosts: web_servers
+- name: Install PostgreSQL on Target VM
+  hosts: your_target_vm
   become: yes
 
   tasks:
-    - name: Update apt cache
+    - name: Update APT package cache
       apt:
         update_cache: yes
 
-    - name: Install Nginx
+    - name: Install PostgreSQL and PostgreSQL-contrib packages
       apt:
-        name: nginx
+        name:
+          - postgresql
+          - postgresql-contrib
         state: present
 
-    - name: Start Nginx service
-      service:
-        name: nginx
+    - name: Ensure PostgreSQL service is started and enabled
+      systemd:
+        name: postgresql
         state: started
+        enabled: yes
