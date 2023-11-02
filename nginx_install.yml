@@ -1,5 +1,5 @@
 ---
-- name: Install Nginx on Ubuntu 20.04
+- name: Installing Nginx on Target VM
   hosts: web_servers
   become: yes
 
@@ -17,4 +17,3 @@
       service:
         name: nginx
         state: started
-
