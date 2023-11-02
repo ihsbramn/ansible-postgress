@@ -1,6 +1,6 @@
 ---
 - name: Install PostgreSQL on Target VM
-  hosts: your_target_vm
+  hosts: web_servers
   become: yes
 
   tasks:
